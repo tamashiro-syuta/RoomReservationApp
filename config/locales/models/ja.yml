@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      reservation: 予約管理システム
+    attributes:
+      reservation:
+        name: 名前
+        start_time: 予約時刻
+        created_at: 予約日時
+        updated_at: 予約変更日時
+# modelsには、モデルのファイル名を記入
