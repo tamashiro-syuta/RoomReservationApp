@@ -1,6 +1,5 @@
-<p id="notice"><%= notice %></p>
 
-<h1>元やんの部屋予約管理</h1>
+<h1>空き部屋予約管理</h1>
 
 <br>
 
@@ -8,14 +7,18 @@
   <%= date.day %>
 
   <% reservations.each do |reservation| %>
+    <% @user = User.find_by(id:reservation.user_id)%>
     <div>
-      <%= reservation.name %>
+      <%= @user.name %>
       <%= reservation.start_time.hour %>:<%= reservation.start_time.min %>
     </div>
   <% end %>
 <% end %>
 
-<%= link_to 'New Reservation', new_reservation_path %>
+<%# ログイン済みのユーザーのみ予約できるような処理 %>
+<% if current_user.present? %>
+  <%= link_to 'New Reservation', new_reservation_path %>
+<% end %>
 
 <%= print(Date.today) %>
 
@@ -33,13 +36,19 @@
 
   <tbody>
     <% @reservations.each do |reservation| %>
+      <% @user = User.find_by(id:reservation.user_id)%>
+      <%# binding.irb %>
       <tr>
-        <td><%= reservation.name %></td>
+        <td><%= @user.name %></td>
         <td><%= reservation.start_time %></td>
-        <td><%= link_to 'Show', reservation %></td>
-        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-        <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# binding.irb %>
+        <% if current_user.present? && reservation.user_id == current_user.id %>
+          <%# <td><%= link_to 'Show', reservation %></td>
+          <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
+          <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+

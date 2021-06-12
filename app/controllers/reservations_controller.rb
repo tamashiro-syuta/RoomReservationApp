@@ -22,6 +22,11 @@ class ReservationsController < ApplicationController
   # POST /reservations or /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
+    # binding.irb
+    @reservation.user_id = current_user.id
+
+    # @user = User.find_by(id: @reservation.user_id)
+    #binding.irb
 
     respond_to do |format|
       if @reservation.save
@@ -64,6 +69,6 @@ class ReservationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reservation_params
-      params.require(:reservation).permit(:name, :start_time)
+      params.require(:reservation).permit(:start_time)
     end
 end

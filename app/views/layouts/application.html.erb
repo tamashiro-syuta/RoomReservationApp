@@ -10,6 +10,23 @@
   </head>
 
   <body>
+
+    <header>
+      <nav>
+          <% if user_signed_in? %>
+            <strong><%= link_to current_user.name, edit_user_registration_path %></strong> <%# 自分の作成した予約のみ閲覧できるページを作り、遷移 %>
+            <%= link_to 'プロフィール変更', edit_user_registration_path %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to 'サインアップ', new_user_registration_path %>
+            <%= link_to 'ログイン', new_user_session_path %>
+          <% end %>
+      </nav>
+    </header>
+
+    <p id="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 </html>
