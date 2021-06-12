@@ -59,6 +59,8 @@ gem 'simple_calendar', '~> 2.0'
 # 時間帯を指定して予約するため
 gem 'validates_timeliness', '~> 6.0.0.alpha1'
 
-
 # エラーメッセージの日本語化
 gem 'rails-i18n'
+
+# ログイン機能
+gem 'devise'
