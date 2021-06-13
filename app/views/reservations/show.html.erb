@@ -10,5 +10,10 @@
   <%= @reservation.start_time %>
 </p>
 
+<p>
+  <strong>予約終了時刻:</strong>
+  <%= @reservation.end_time %>
+</p>
+
 <%= link_to '編集', edit_reservation_path(@reservation) %> |
 <%= link_to '予約', reservations_path %>

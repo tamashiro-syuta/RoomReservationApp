@@ -4,8 +4,10 @@ class Reservation < ApplicationRecord
     # validate :start_time_not_saturday
     # validate :time_only
     validates :start_time, uniqueness: { message: 'は他のユーザーが予約しています' }
+    validates :end_time, uniqueness: { message: 'は他のユーザーが予約しています' }
   
     def date_before_start
+      # binding.irb
       errors.add(:start_time, "には過去の日付を選択できません") if start_time < Date.today
     end
   

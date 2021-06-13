@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RoomReservationApp</title>
+    <title>空き部屋管理システム</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,7 +14,6 @@
     <header>
       <nav>
           <% if user_signed_in? %>
-            <strong><%= link_to current_user.name, edit_user_registration_path %></strong> <%# 自分の作成した予約のみ閲覧できるページを作り、遷移 %>
             <%= link_to 'プロフィール変更', edit_user_registration_path %>
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
           <% else %>
