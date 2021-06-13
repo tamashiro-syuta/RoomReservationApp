@@ -1,14 +1,14 @@
-<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @reservation.user_id %>
+  <strong>名前:</strong>
+  <% @user = User.find_by(id:@reservation.user_id)%>
+  <%= @user.name %>
 </p>
 
 <p>
-  <strong>Start time:</strong>
+  <strong>予約開始時刻:</strong>
   <%= @reservation.start_time %>
 </p>
 
-<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
-<%= link_to 'Back', reservations_path %>
+<%= link_to '編集', edit_reservation_path(@reservation) %> |
+<%= link_to '予約', reservations_path %>

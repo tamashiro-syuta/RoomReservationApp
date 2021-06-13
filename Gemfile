@@ -64,3 +64,6 @@ gem 'rails-i18n'
 
 # ログイン機能
 gem 'devise'
+
+# deviseの日本語化
+gem 'devise-i18n'
